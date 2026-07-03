@@ -8,46 +8,71 @@
   @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
   :root{
-    --paper: #F5F1E4;
-    --card: #FFFFFF;
-    --ink: #1F2E2;
-    --ink-soft: #203b22;
-    --moss: #4C8A3A;
-    --moss-2: #7FC955;
-    --moss-dark: #2E5A24;
-    --clay: #C85A32;
-    --clay-soft: #FBE0D2;
-    --gold: #EBA92E;
-    --gold-soft: #FCEBC4;
-    --sky: #2C8FA6;
-    --sky-soft: #D7EEF3;
-    --line: #E2D9C2;
-    --ok: #4C8A3A;
-    --warn: #C6912A;
-    --bad: #C8492E;
-    --radius: 16px;
-    --font-display: 'Baloo 2', 'Segoe UI Rounded', sans-serif;
-    --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
-    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+    --paper:#F7F5EF;
+    --card:#FFFFFF;
+
+    --ink:#243328;
+    --ink-soft:#6F7C70;
+
+    --moss:#5C8D45;
+    --moss-2:#8DBB63;
+    --moss-dark:#3E6731;
+
+    --clay:#D76A43;
+    --clay-soft:#FFF0E8;
+
+    --gold:#F5C24B;
+    --gold-soft:#FFF5D9;
+
+    --sky:#69A8B5;
+    --sky-soft:#EAF7F8;
+
+    --line:#E8E2D3;
+
+    --ok:#5C8D45;
+    --warn:#E1A92A;
+    --bad:#D4573C;
+
+    --radius:20px;
+
+    --font-display:'Baloo 2',sans-serif;
+    --font-body:'Plus Jakarta Sans',sans-serif;
+    --font-mono:'JetBrains Mono',monospace;
+
   }
 
   *{box-sizing:border-box;}
   body{
+
     margin:0;
-    background:var(--paper);
+    background:#f6fcef;
     color:var(--ink);
     font-family:var(--font-body);
-    background-image: radial-gradient(circle at 1px 1px, rgba(31,46,35,0.05) 1px, transparent 0);
-    background-size: 24px 24px;
-  }
-  .wrap{max-width:960px;margin:0 auto;padding:26px 20px 90px;}
+
+    background-image:
+    radial-gradient(circle at 2px 2px,rgba(120,120,120,.05) 1px,transparent 0);
+
+    background-size:26px 26px;
+
+}
+  .wrap{
+max-width:1350px;
+margin:auto;
+padding:30px;
+}
 
   header.hero{
-    display:flex;justify-content:space-between;align-items:flex-end;
-    padding-bottom:18px;margin-bottom:22px;
-    flex-wrap:wrap;gap:14px;
-    border-bottom:3px solid var(--ink);
-  }
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding-bottom:22px;
+
+border-bottom:1px solid var(--line);
+
+}
   .brand-mark{display:flex;align-items:center;gap:12px;}
   h1{
     font-family:var(--font-display);
@@ -68,34 +93,61 @@
   }
   nav.tabs{display:flex;gap:6px;flex-wrap:wrap;}
   nav.tabs button{
-    font-family:var(--font-display);
-    font-weight:600;
-    font-size:0.86rem;
-    background:none;
-    border:2px solid var(--ink);
-    color:var(--ink);
-    padding:8px 15px;
-    cursor:pointer;
-    border-radius:999px;
-    transition:all .15s ease;
-  }
-  nav.tabs button.active{background:var(--ink);color:var(--paper);}
-  nav.tabs button:not(.active):hover{background:rgba(31,46,35,0.08);}
+
+background:transparent;
+
+border:none;
+
+padding:12px 18px;
+
+border-radius:14px;
+
+font-size:.9rem;
+
+font-weight:600;
+
+color:var(--ink);
+
+transition:.25s;
+
+}
+nav.tabs button.active{
+
+background:#E8F1DD;
+
+color:var(--moss-dark);
+
+}  nav.tabs button:not(.active):hover{background:rgba(31,46,35,0.08);}
+nav.tabs button:hover{
+
+background:#F2F7EC;
+
+}
 
   section{display:none;}
   section.active{display:block;}
 
-  h2.page-title{font-family:var(--font-display);font-size:1.5rem;font-weight:700;margin:0 0 4px;}
-  p.page-sub{color:var(--ink-soft);font-size:0.92rem;max-width:620px;margin:0 0 18px;}
+h2.page-title{
+
+font-size:2rem;
+
+font-weight:800;
+
+margin-bottom:8px;
+
+color:var(--ink);
+
+}  p.page-sub{color:var(--ink-soft);font-size:0.92rem;max-width:620px;margin:0 0 18px;}
 
   /* ---- Scanner ---- */
   .scan-panel{
     background:var(--card);
-    border:2px solid var(--ink);
+    border:0px solid var(--ink);
     border-radius:var(--radius);
     padding:26px;
     position:relative;
-    box-shadow:6px 6px 0 rgba(31,46,35,0.08);
+    box-shadow:
+0 8px 24px rgba(0,0,0,.06);
   }
   .drop-zone{
     border:2.5px dashed var(--line);
@@ -194,10 +246,26 @@
   /* ---- Garden grid ---- */
   .garden-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px;margin-top:20px;}
   .garden-card{
-    background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);padding:16px;
-    display:flex;flex-direction:column;gap:8px;
-    box-shadow:4px 4px 0 rgba(31,46,35,0.07);
-  }
+
+background:white;
+
+border:1px solid #ECE6D7;
+
+border-radius:22px;
+
+padding:18px;
+
+transition:.25s;
+
+box-shadow:
+0 8px 25px rgba(0,0,0,.06);
+gap: 10px ;
+}
+.garden-card:hover{
+
+transform:translateY(-5px);
+
+}
   .garden-card-top{display:flex;gap:12px;align-items:center;}
   .garden-thumb{width:56px;height:56px;object-fit:cover;border-radius:10px;border:2px solid var(--ink);flex-shrink:0;background:var(--paper);}
   .garden-name{font-family:var(--font-display);font-weight:700;font-size:1.1rem;}
@@ -220,15 +288,66 @@
   footer{margin-top:50px;text-align:center;font-family:var(--font-mono);font-size:0.68rem;color:var(--ink-soft);letter-spacing:0.05em;}
 
   /* ---- Library ---- */
-  .library-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:6px;}
-  .lib-card{
-    background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);overflow:hidden;
-    display:flex;flex-direction:column;
-    box-shadow:5px 5px 0 rgba(31,46,35,0.07);
-  }
+.library-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fill,minmax(360px,1fr));
+
+gap:26px;
+
+} .lib-card{
+
+background:white;
+
+border:1px solid #ECE6D7;
+
+border-radius:22px;
+
+overflow:hidden;
+
+transition:.25s;
+
+display:flex;
+
+flex-direction:column;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.06);
+
+}
+.lib-card:hover{
+
+transform:translateY(-5px);
+
+box-shadow:
+0 18px 40px rgba(0,0,0,.08);
+
+}
   .lib-pic{
-    height:130px;display:flex;align-items:center;justify-content:center;
-  }
+
+height:200px;
+
+overflow:hidden;
+
+}
+.lib-pic img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+transition:.4s;
+
+}
+.lib-card:hover .lib-pic img{
+
+transform:scale(1.05);
+
+}
   .lib-body{padding:16px;display:flex;flex-direction:column;gap:10px;}
   .lib-name{font-family:var(--font-display);font-weight:700;font-size:1.15rem;}
   .lib-sci{font-style:italic;color:var(--ink-soft);font-size:0.78rem;}
@@ -243,7 +362,7 @@
   .lib-care{font-size:0.82rem;color:var(--ink-soft);border-top:1.5px dashed var(--line);padding-top:8px;margin-top:2px;}
 
   /* ---- Learn & Support ---- */
-  .accordion{border:2px solid var(--ink);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;background:var(--card);}
+  .accordion{border:0px solid var(--ink);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;background:var(--card);}
   .accordion-head{
     display:flex;justify-content:space-between;align-items:center;padding:14px 18px;cursor:pointer;
     font-family:var(--font-display);font-weight:700;font-size:1rem;
@@ -256,7 +375,7 @@
 
   .treatment-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:6px;}
   .treatment-card{
-    background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);padding:16px;
+    background:var(--card);border:0px solid var(--ink);border-radius:var(--radius);padding:16px;
     box-shadow:4px 4px 0 rgba(31,46,35,0.07);
   }
   .treatment-card h4{font-family:var(--font-display);font-size:1rem;margin:0 0 6px;color:var(--clay);}
@@ -273,11 +392,41 @@
   }
   .support-card h4{font-family:var(--font-display);font-size:1.15rem;margin:0 0 4px;color:var(--sky);}
   .support-card p{margin:0;font-size:0.87rem;color:var(--ink-soft);max-width:420px;}
-  .btn.sky{background:var(--sky);border-color:var(--sky);}
+  .btn{
+
+padding:12px 24px;
+
+border:none;
+
+border-radius:999px;
+
+font-weight:700;
+
+font-size:.9rem;
+
+background:linear-gradient(
+90deg,
+var(--moss-dark),
+var(--moss)
+);
+
+color:white;
+
+transition:.25s;
+
+}
+.btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 8px 20px rgba(76,138,58,.25);
+
+}
 
   /* ---- Ask AI (chat) ---- */
   .chat-shell{
-    background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+    background:var(--card);border:0px solid var(--ink);border-radius:var(--radius);
     display:flex;flex-direction:column;height:560px;overflow:hidden;
     box-shadow:6px 6px 0 rgba(31,46,35,0.08);
   }
@@ -325,9 +474,29 @@
     display:flex;gap:10px;padding:14px 16px;border-top:2px solid var(--line);background:var(--card);
   }
   .chat-input-row textarea{
-    flex:1;resize:none;border:2px solid var(--line);border-radius:999px;padding:11px 18px;
-    font-family:var(--font-body);font-size:0.9rem;line-height:1.4;max-height:90px;
-  }
+
+flex:1;
+resize:none;
+
+border:none;
+background:#F8F8F4;
+
+border-radius:999px;
+
+padding:18px 24px;
+
+font-family:'Plus Jakarta Sans', sans-serif;
+
+font-size:1rem;          /* 16px */
+font-weight:500;
+
+line-height:1.6;
+
+color:var(--ink);
+
+max-height:120px;
+
+}
   .chat-input-row textarea:focus{outline:none;border-color:var(--sky);}
   .send-btn{
     width:44px;height:44px;border-radius:50%;background:var(--sky);border:none;color:#fff;font-size:1.1rem;
@@ -368,7 +537,7 @@
   </header>
 
   <!-- SCAN TAB -->
-  <section id="tab-scan" class="active"></section>
+  <section id="tab-scan" class="active">
     <h2 class="page-title">Scan a plant</h2>
     <p class="page-sub">Upload or snap a photo for instant identification, a health check, and a treatment plan if something's wrong.</p>
     <div class="scan-panel">
@@ -464,7 +633,7 @@
   // 🔑 PUT YOUR GEMINI API KEY HERE
   // Get a free key at: https://aistudio.google.com/app/apikey
   // ============================================================
-  const API_KEY = "AQ.Ab8RN6KMeuivrMP43JWnA6kG-XfTtCujx9VX2N5yD6AkdUD3Fg";
+  const API_KEY = "AQ.Ab8RN6JJxBf4YdiynG-YFAOJAyh7WupT8FHSNt_VNHEv2Lpd4Q";
   const MODEL = "gemini-2.5-flash";
 
   // ============ TAB SWITCHING ============
@@ -799,66 +968,116 @@ If the plant cannot be identified with certainty, give your best guess and set c
     </svg>`;
   }
 
-  const LIB_ICONS = {
-    pothos: potIcon(`<path d="M30 8C21 9 17 18 19 26C21 33 26 38 30 38C34 38 39 33 41 26C43 18 39 9 30 8Z" fill="#5B9C46" stroke="#2E5A24" stroke-width="1.3"/><path d="M24 15C24 15 22 20 26 24" stroke="#EAF4E4" stroke-width="1.4" fill="none"/><path d="M36 15C36 15 38 20 34 24" stroke="#EAF4E4" stroke-width="1.4" fill="none"/>`),
-    snake: potIcon(`<path d="M22 40C20 30 21 18 24 6" stroke="#2E5A24" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M22 40C20 30 21 18 24 6" stroke="#7FC955" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M30 40C29 27 30 14 30 4" stroke="#35602E" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M38 40C40 30 39 18 36 6" stroke="#2E5A24" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M38 40C40 30 39 18 36 6" stroke="#7FC955" stroke-width="1.2" fill="none" stroke-linecap="round"/>`),
-    monstera: potIcon(`<path d="M30 7C19 8 15 18 17 27C19 34 25 38 30 38C35 38 41 34 43 27C45 18 41 8 30 7Z" fill="#4C8A3A" stroke="#2E5A24" stroke-width="1.3"/><path d="M22 17C22 22 25 23 25 27" stroke="#F5F1E4" stroke-width="1.6" fill="none"/><path d="M38 17C38 22 35 23 35 27" stroke="#F5F1E4" stroke-width="1.6" fill="none"/><circle cx="30" cy="15" r="2" fill="#F5F1E4"/>`),
-    peacelily: potIcon(`<path d="M23 40C15 33 15 20 23 10C24 20 25 31 23 40Z" fill="#3F6B2B" stroke="#2E5A24" stroke-width="1.2"/><path d="M37 40C45 33 45 20 37 10C36 20 35 31 37 40Z" fill="#4C8A3A" stroke="#2E5A24" stroke-width="1.2"/><path d="M30 6C30 6 34 11 30 17C26 11 30 6 30 6Z" fill="#FFFFFF" stroke="#2E5A24" stroke-width="1.1"/><line x1="30" y1="17" x2="30" y2="27" stroke="#EBA92E" stroke-width="1.6"/>`),
-    fiddlefig: potIcon(`<path d="M30 7C20 11 17 21 19 29C20.5 35 25 38 30 38C35 38 39.5 35 41 29C43 21 40 11 30 7Z" fill="#3F6B2B" stroke="#2E5A24" stroke-width="1.3"/><path d="M30 12L30 34" stroke="#EAF4E4" stroke-width="1.4"/><ellipse cx="26" cy="18" rx="3" ry="5" fill="#5B9C46" opacity="0.6"/>`),
-    aloe: potIcon(`<path d="M30 39L22 10C27 14 30 22 30 22C30 22 33 14 38 10Z" fill="#7FA86B" stroke="#2E5A24" stroke-width="1.2"/><path d="M30 39L18 16C24 18 29 26 29 26" fill="#8FB878" stroke="#2E5A24" stroke-width="1.1"/><path d="M30 39L42 16C36 18 31 26 31 26" fill="#8FB878" stroke="#2E5A24" stroke-width="1.1"/>`),
-    zz: potIcon(`<path d="M24 39C23 30 23 18 24 8" stroke="#2E5A24" stroke-width="2.5" fill="none"/><ellipse cx="22" cy="14" rx="3.4" ry="2.2" fill="#355E3B" stroke="#2E5A24" stroke-width="0.8"/><ellipse cx="26" cy="20" rx="3.4" ry="2.2" fill="#4C8A3A" stroke="#2E5A24" stroke-width="0.8"/><ellipse cx="22" cy="26" rx="3.4" ry="2.2" fill="#355E3B" stroke="#2E5A24" stroke-width="0.8"/><path d="M36 39C37 30 37 18 36 8" stroke="#2E5A24" stroke-width="2.5" fill="none"/><ellipse cx="38" cy="14" rx="3.4" ry="2.2" fill="#4C8A3A" stroke="#2E5A24" stroke-width="0.8"/><ellipse cx="34" cy="20" rx="3.4" ry="2.2" fill="#355E3B" stroke="#2E5A24" stroke-width="0.8"/><ellipse cx="38" cy="26" rx="3.4" ry="2.2" fill="#4C8A3A" stroke="#2E5A24" stroke-width="0.8"/>`),
-    spider: potIcon(`<path d="M30 39C24 30 18 24 14 20" stroke="#5B9C46" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M30 39C24 30 18 24 14 20" stroke="#EAF4E4" stroke-width="1" fill="none"/><path d="M30 39C36 30 42 24 46 20" stroke="#5B9C46" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M30 39C36 30 42 24 46 20" stroke="#EAF4E4" stroke-width="1" fill="none"/><path d="M30 39C29 27 29 16 30 6" stroke="#4C8A3A" stroke-width="3" stroke-linecap="round" fill="none"/>`),
-    rubber: potIcon(`<path d="M30 6C21 9 18 18 20 27C21.5 34 26 38 30 38C34 38 38.5 34 40 27C42 18 39 9 30 6Z" fill="#4C6B3E" stroke="#2E5A24" stroke-width="1.3"/><ellipse cx="27" cy="16" rx="4" ry="6" fill="#7A4B3A" opacity="0.55"/>`),
-    ivy: potIcon(`<path d="M30 39C24 33 15 32 12 26" stroke="#4C8A3A" stroke-width="2" fill="none"/><path d="M30 39C36 33 45 32 48 26" stroke="#4C8A3A" stroke-width="2" fill="none"/><path d="M17 22C14 23 12 26 12 26C12 26 15 27 17 25C19 27 22 26 22 26C22 26 20 23 17 22Z" fill="#5B9C46" stroke="#2E5A24" stroke-width="1"/><path d="M43 22C46 23 48 26 48 26C48 26 45 27 43 25C41 27 38 26 38 26C38 26 40 23 43 22Z" fill="#5B9C46" stroke="#2E5A24" stroke-width="1"/><path d="M30 39L30 30" stroke="#4C8A3A" stroke-width="2"/><path d="M25 31C22 29 20 26 20 26C20 26 23 25 26 27C27 25 30 25 30 25C30 25 29 29 25 31Z" fill="#7FC955" stroke="#2E5A24" stroke-width="1"/>`)
-  };
+  // const LIB_ICONS = {
+  //   pothos: potIcon(`<path d="M30 8C21 9 17 18 19 26C21 33 26 38 30 38C34 38 39 33 41 26C43 18 39 9 30 8Z" fill="#5B9C46" stroke="#2E5A24" stroke-width="1.3"/><path d="M24 15C24 15 22 20 26 24" stroke="#EAF4E4" stroke-width="1.4" fill="none"/><path d="M36 15C36 15 38 20 34 24" stroke="#EAF4E4" stroke-width="1.4" fill="none"/>`),
+  //   snake: potIcon(`<path d="M22 40C20 30 21 18 24 6" stroke="#2E5A24" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M22 40C20 30 21 18 24 6" stroke="#7FC955" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M30 40C29 27 30 14 30 4" stroke="#35602E" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M38 40C40 30 39 18 36 6" stroke="#2E5A24" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M38 40C40 30 39 18 36 6" stroke="#7FC955" stroke-width="1.2" fill="none" stroke-linecap="round"/>`),
+  //   monstera: potIcon(`<path d="M30 7C19 8 15 18 17 27C19 34 25 38 30 38C35 38 41 34 43 27C45 18 41 8 30 7Z" fill="#4C8A3A" stroke="#2E5A24" stroke-width="1.3"/><path d="M22 17C22 22 25 23 25 27" stroke="#F5F1E4" stroke-width="1.6" fill="none"/><path d="M38 17C38 22 35 23 35 27" stroke="#F5F1E4" stroke-width="1.6" fill="none"/><circle cx="30" cy="15" r="2" fill="#F5F1E4"/>`),
+  //   peacelily: potIcon(`<path d="M23 40C15 33 15 20 23 10C24 20 25 31 23 40Z" fill="#3F6B2B" stroke="#2E5A24" stroke-width="1.2"/><path d="M37 40C45 33 45 20 37 10C36 20 35 31 37 40Z" fill="#4C8A3A" stroke="#2E5A24" stroke-width="1.2"/><path d="M30 6C30 6 34 11 30 17C26 11 30 6 30 6Z" fill="#FFFFFF" stroke="#2E5A24" stroke-width="1.1"/><line x1="30" y1="17" x2="30" y2="27" stroke="#EBA92E" stroke-width="1.6"/>`),
+  //   fiddlefig: potIcon(`<path d="M30 7C20 11 17 21 19 29C20.5 35 25 38 30 38C35 38 39.5 35 41 29C43 21 40 11 30 7Z" fill="#3F6B2B" stroke="#2E5A24" stroke-width="1.3"/><path d="M30 12L30 34" stroke="#EAF4E4" stroke-width="1.4"/><ellipse cx="26" cy="18" rx="3" ry="5" fill="#5B9C46" opacity="0.6"/>`),
+  //   aloe: potIcon(`<path d="M30 39L22 10C27 14 30 22 30 22C30 22 33 14 38 10Z" fill="#7FA86B" stroke="#2E5A24" stroke-width="1.2"/><path d="M30 39L18 16C24 18 29 26 29 26" fill="#8FB878" stroke="#2E5A24" stroke-width="1.1"/><path d="M30 39L42 16C36 18 31 26 31 26" fill="#8FB878" stroke="#2E5A24" stroke-width="1.1"/>`),
+  //   zz: potIcon(`<path d="M24 39C23 30 23 18 24 8" stroke="#2E5A24" stroke-width="2.5" fill="none"/><ellipse cx="22" cy="14" rx="3.4" ry="2.2" fill="#355E3B" stroke="#2E5A24" stroke-width="0.8"/><ellipse cx="26" cy="20" rx="3.4" ry="2.2" fill="#4C8A3A" stroke="#2E5A24" stroke-width="0.8"/><ellipse cx="22" cy="26" rx="3.4" ry="2.2" fill="#355E3B" stroke="#2E5A24" stroke-width="0.8"/><path d="M36 39C37 30 37 18 36 8" stroke="#2E5A24" stroke-width="2.5" fill="none"/><ellipse cx="38" cy="14" rx="3.4" ry="2.2" fill="#4C8A3A" stroke="#2E5A24" stroke-width="0.8"/><ellipse cx="34" cy="20" rx="3.4" ry="2.2" fill="#355E3B" stroke="#2E5A24" stroke-width="0.8"/><ellipse cx="38" cy="26" rx="3.4" ry="2.2" fill="#4C8A3A" stroke="#2E5A24" stroke-width="0.8"/>`),
+  //   spider: potIcon(`<path d="M30 39C24 30 18 24 14 20" stroke="#5B9C46" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M30 39C24 30 18 24 14 20" stroke="#EAF4E4" stroke-width="1" fill="none"/><path d="M30 39C36 30 42 24 46 20" stroke="#5B9C46" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M30 39C36 30 42 24 46 20" stroke="#EAF4E4" stroke-width="1" fill="none"/><path d="M30 39C29 27 29 16 30 6" stroke="#4C8A3A" stroke-width="3" stroke-linecap="round" fill="none"/>`),
+  //   rubber: potIcon(`<path d="M30 6C21 9 18 18 20 27C21.5 34 26 38 30 38C34 38 38.5 34 40 27C42 18 39 9 30 6Z" fill="#4C6B3E" stroke="#2E5A24" stroke-width="1.3"/><ellipse cx="27" cy="16" rx="4" ry="6" fill="#7A4B3A" opacity="0.55"/>`),
+  //   ivy: potIcon(`<path d="M30 39C24 33 15 32 12 26" stroke="#4C8A3A" stroke-width="2" fill="none"/><path d="M30 39C36 33 45 32 48 26" stroke="#4C8A3A" stroke-width="2" fill="none"/><path d="M17 22C14 23 12 26 12 26C12 26 15 27 17 25C19 27 22 26 22 26C22 26 20 23 17 22Z" fill="#5B9C46" stroke="#2E5A24" stroke-width="1"/><path d="M43 22C46 23 48 26 48 26C48 26 45 27 43 25C41 27 38 26 38 26C38 26 40 23 43 22Z" fill="#5B9C46" stroke="#2E5A24" stroke-width="1"/><path d="M30 39L30 30" stroke="#4C8A3A" stroke-width="2"/><path d="M25 31C22 29 20 26 20 26C20 26 23 25 26 27C27 25 30 25 30 25C30 25 29 29 25 31Z" fill="#7FC955" stroke="#2E5A24" stroke-width="1"/>`)
+  // };
 
-  const LIBRARY = [
-    { icon:'pothos', bg:'#EAF4E4', common_name:'Pothos', scientific_name:'Epipremnum aureum', difficulty:'Very easy',
-      good:['Glossy, heart-shaped leaves in even green or cream variegation','Vines actively lengthening, new leaves unfurling regularly','Firm stems that spring back when bent'],
-      watch:['Crispy brown edges — usually underwatering or dry air','Yellow leaves lower on the vine — often overwatering','Long bare stretches with no leaves — needs more light'],
-      care:'Bright, indirect light. Water every 7–9 days, letting the top inch of soil dry out first.' },
-    { icon:'snake', bg:'#E6F1DF', common_name:'Snake Plant', scientific_name:'Dracaena trifasciata', difficulty:'Very easy',
-      good:['Stiff, upright leaves with crisp, well-defined edges','Deep green with clean banding or yellow leaf margins','Slow, steady new shoots emerging from the soil line'],
-      watch:['Soft, mushy, or dark patches at the base — root rot from overwatering','Leaves curling or puckering — soil has been dry too long','Pale, washed-out color — too much direct sun'],
-      care:'Tolerates low to bright indirect light. Water every 14–21 days — let soil dry out completely.' },
-    { icon:'monstera', bg:'#EAF4E4', common_name:'Monstera', scientific_name:'Monstera deliciosa', difficulty:'Moderate',
-      good:['Mature leaves developing splits and holes (fenestration)','New leaves emerging bright green and unfurling within days','Firm, upright stems supported by a pole or stake'],
-      watch:['Yellowing lower leaves — most often overwatering','Brown, crispy edges — low humidity or underwatering','New leaves with no splits — insufficient light'],
-      care:'Bright, indirect light and higher humidity. Water every 7–10 days; give it something to climb.' },
-    { icon:'peacelily', bg:'#F1F7EC', common_name:'Peace Lily', scientific_name:'Spathiphyllum', difficulty:'Easy',
-      good:['Dark, glossy leaves standing upright','White, hood-shaped blooms appearing periodically','Leaves that perk back up within hours of watering'],
-      watch:['Dramatic drooping — its normal thirst signal, should recover fast after watering','Brown leaf tips — often tap water minerals or dry air','No blooms for a long stretch — likely needs more light'],
-      care:'Medium, indirect light. Water weekly, keeping soil evenly moist. Toxic to pets if chewed.' },
-    { icon:'fiddlefig', bg:'#EAF4E4', common_name:'Fiddle Leaf Fig', scientific_name:'Ficus lyrata', difficulty:'Difficult',
-      good:['Large, violin-shaped leaves standing upright and glossy','New growth emerging from the top at a steady pace','Leaves facing evenly toward the light source'],
-      watch:['Brown spots with yellow halos — usually overwatering or root stress','Sudden leaf drop after being moved — normal stress, but watch for repeats','Leaning heavily toward one side — rotate the pot regularly'],
-      care:'Bright, indirect, consistent light. Water every 7–10 days. Avoid moving it often.' },
-    { icon:'aloe', bg:'#F1F7EC', common_name:'Aloe Vera', scientific_name:'Aloe vera', difficulty:'Easy',
-      good:['Thick, plump, upright leaves in gray-green','Firm texture with a slight waxy coating','Small offset "pups" appearing at the base over time'],
-      watch:['Thin, curling leaves — underwatered','Mushy, translucent, or discolored leaves — overwatering or rot','Brown leaf tips — too much direct sun or mineral buildup'],
-      care:'Bright light, well-draining soil. Water every 14–21 days, letting soil dry out fully.' },
-    { icon:'zz', bg:'#E6F1DF', common_name:'ZZ Plant', scientific_name:'Zamioculcas zamiifolia', difficulty:'Very easy',
-      good:['Glossy, dark green leaflets on thick, upright stems','Steady if slow new growth from the base','Firm, waxy-feeling foliage'],
-      watch:['Yellow leaflets — almost always overwatering','Soft or mushy stems at the base — root rot','Very stunted growth for months — may just need more light, not more water'],
-      care:'Tolerates low to bright indirect light. Water every 14–21 days; very forgiving of neglect.' },
-    { icon:'spider', bg:'#F1F7EC', common_name:'Spider Plant', scientific_name:'Chlorophytum comosum', difficulty:'Easy',
-      good:['Arching, striped green-and-white leaves','Baby "spiderettes" forming on long runners','Dense, full rosette of foliage at the base'],
-      watch:['Brown tips — often fluoride/chlorine in tap water or dry air','Pale, bleached leaves — too much direct sun','No plantlets forming — plant may just be young or needs more light'],
-      care:'Bright, indirect light. Water every 7–10 days; use filtered water if tips keep browning.' },
-    { icon:'rubber', bg:'#EAF4E4', common_name:'Rubber Plant', scientific_name:'Ficus elastica', difficulty:'Moderate',
-      good:['Thick, glossy, deep-green (or burgundy) leaves standing upright','New leaves emerging in a rolled, reddish sheath','Leaves shiny and dust-free'],
-      watch:['Dropping lower leaves — overwatering or a cold draft','Curling leaves — underwatering','Dull, dusty leaves — needs an occasional wipe-down'],
-      care:'Bright, indirect light. Water every 7–10 days; wipe leaves regularly to keep them breathing.' },
-    { icon:'ivy', bg:'#E6F1DF', common_name:'English Ivy', scientific_name:'Hedera helix', difficulty:'Easy',
-      good:['Lobed green or variegated leaves, densely trailing','Vines steadily lengthening with close leaf spacing','Firm, springy stems'],
-      watch:['Yellowing leaves with fine webbing — spider mites, likes dry air','Brown, crispy edges — low humidity','Sparse, leggy vines — needs more light or a trim'],
-      care:'Medium, indirect light. Water every 5–7 days; mist occasionally. Toxic to pets.' }
-  ];
+const LIBRARY = [
+  {
+    icon:'pothos',
+    img:'pothos.jpg',
+    common_name:'Pothos',
+    scientific_name:'Epipremnum aureum',
+    good:['Glossy leaves','Fast growth'],
+    watch:['Yellow leaves','Crispy edges'],
+    care:'Water every 7–9 days'
+  },
+  {
+    icon:'snake',
+    img:'snake plant.jpg',
+    common_name:'Snake Plant',
+    scientific_name:'Dracaena trifasciata',
+    good:['Upright leaves','Very strong'],
+    watch:['Soft base','Yellowing'],
+    care:'Water every 14–21 days'
+  },
+  {
+    icon:'monstera',
+    img:'monstera.webp',
+    common_name:'Monstera',
+    scientific_name:'Monstera deliciosa',
+    good:['Split leaves','Big growth'],
+    watch:['Brown edges','Yellow leaves'],
+    care:'Bright indirect light'
+  },
+  {
+    icon:'peacelily',
+    img:'peace lily.jpg',
+    common_name:'Peace Lily',
+    scientific_name:'Spathiphyllum',
+    good:['White flowers','Glossy leaves'],
+    watch:['Drooping','Brown tips'],
+    care:'Keep soil moist'
+  },
+  {
+    icon:'fiddlefig',
+    img:'fiddle leaf fig.jpg',
+    common_name:'Fiddle Leaf Fig',
+    scientific_name:'Ficus lyrata',
+    good:['Large leaves','Tall growth'],
+    watch:['Leaf drop','Brown spots'],
+    care:'Stable light'
+  },
+  {
+    icon:'aloe',
+    img:'aloe vera.webp',
+    common_name:'Aloe Vera',
+    scientific_name:'Aloe vera',
+    good:['Thick leaves','Healing gel'],
+    watch:['Mushy leaves','Curling'],
+    care:'Dry soil preferred'
+  },
+  {
+    icon:'zz',
+    img:'ZZ plant.jpg',
+    common_name:'ZZ Plant',
+    scientific_name:'Zamioculcas zamiifolia',
+    good:['Very hardy','Shiny leaves'],
+    watch:['Yellowing','Rot'],
+    care:'Low water needed'
+  },
+  {
+    icon:'spider',
+    img:'spider plant.webp',
+    common_name:'Spider Plant',
+    scientific_name:'Chlorophytum comosum',
+    good:['Baby plants','Fast growth'],
+    watch:['Brown tips','Fading color'],
+    care:'Moderate water'
+  },
+  {
+    icon:'rubber',
+    img:'rubber plant.webp',
+    common_name:'Rubber Plant',
+    scientific_name:'Ficus elastica',
+    good:['Glossy leaves','Strong stem'],
+    watch:['Leaf drop','Curling'],
+    care:'Bright light'
+  },
+  {
+    icon:'ivy',
+    img:'english ivy.webp',
+    common_name:'English Ivy',
+    scientific_name:'Hedera helix',
+    good:['Trailing vines','Dense leaves'],
+    watch:['Pests','Dry leaves'],
+    care:'Regular watering'
+  }
+];
 
   function renderLibrary(){
     document.getElementById('libraryHolder').innerHTML = LIBRARY.map(p => `
       <div class="lib-card">
-        <div class="lib-pic" style="background:${p.bg}">${LIB_ICONS[p.icon]}</div>
+        <div class="lib-pic" style="background:${p.bg}"><img src="${p.img}" alt="${p.common_name}" style="width:100%;height:100%;object-fit:cover;"></div>
         <div class="lib-body">
           <div>
             <div class="lib-name">${p.common_name}</div>
@@ -878,6 +1097,7 @@ If the plant cannot be identified with certainty, give your best guess and set c
       </div>
     `).join('');
   }
+
 
   // ============ LEARN & SUPPORT ============
   const GUIDES = [
@@ -904,24 +1124,87 @@ If the plant cannot be identified with certainty, give your best guess and set c
     });
   }
 
+  // const TREATMENTS = [
+  //   { name:'Aphids &amp; mealybugs', img:'Aphids & mealybugs.jpg', desc:'Small clustered insects on new growth or leaf undersides, often with sticky residue.', products:'Insecticidal soap or neem oil spray, applied weekly' },
+  //   { name:'Spider mites', desc:'Fine webbing and stippled, dull leaves, especially in dry indoor air.', products:'Insecticidal soap, increased humidity, isolate the plant' },
+  //   { name:'Powdery mildew', desc:'White, powdery coating on leaves, usually from poor airflow and high humidity.', products:'Remove affected leaves, improve airflow, fungicidal spray if it spreads' },
+  //   { name:'Root rot', desc:'Mushy, dark roots and a sour smell, from soil staying wet too long.', products:'Unpot, trim blackened roots, repot in fresh well-draining mix' },
+  //   { name:'Overwatering yellowing', desc:'Lower leaves turning yellow and soft while soil stays consistently wet.', products:'Check drainage holes, let soil dry fully, consider a terracotta pot' },
+  //   { name:'Nutrient deficiency', desc:'Pale color or unusually slow growth despite otherwise good care.', products:'Balanced liquid fertilizer during the active growing season' }
+  // ];
   const TREATMENTS = [
-    { name:'Aphids &amp; mealybugs', desc:'Small clustered insects on new growth or leaf undersides, often with sticky residue.', products:'Insecticidal soap or neem oil spray, applied weekly' },
-    { name:'Spider mites', desc:'Fine webbing and stippled, dull leaves, especially in dry indoor air.', products:'Insecticidal soap, increased humidity, isolate the plant' },
-    { name:'Powdery mildew', desc:'White, powdery coating on leaves, usually from poor airflow and high humidity.', products:'Remove affected leaves, improve airflow, fungicidal spray if it spreads' },
-    { name:'Root rot', desc:'Mushy, dark roots and a sour smell, from soil staying wet too long.', products:'Unpot, trim blackened roots, repot in fresh well-draining mix' },
-    { name:'Overwatering yellowing', desc:'Lower leaves turning yellow and soft while soil stays consistently wet.', products:'Check drainage holes, let soil dry fully, consider a terracotta pot' },
-    { name:'Nutrient deficiency', desc:'Pale color or unusually slow growth despite otherwise good care.', products:'Balanced liquid fertilizer during the active growing season' }
-  ];
-
-  function renderTreatments(){
-    document.getElementById('treatmentHolder').innerHTML = TREATMENTS.map(t=>`
-      <div class="treatment-card">
-        <h4>${t.name}</h4>
-        <p>${t.desc}</p>
-        <div class="products">Treatment: ${t.products}</div>
-      </div>
-    `).join('');
+    
+  {
+    
+    name: 'Aphids & mealybugs',
+    img: 'Aphids & mealybugs.jpg',
+    desc: 'Small clustered insects on new growth or leaf undersides, often with sticky residue.',
+    products: 'Insecticidal soap or neem oil spray, applied weekly'
+  },
+  {
+    name: 'Spider mites',
+    img: 'Spider mites.webp',
+    desc: 'Fine webbing and stippled, dull leaves, especially in dry indoor air.',
+    products: 'Insecticidal soap, increased humidity, isolate the plant'
+  },
+  {
+    name: 'Powdery mildew',
+    img: 'Powdery mildew.webp',
+    desc: 'White, powdery coating on leaves, usually from poor airflow and high humidity.',
+    products: 'Remove affected leaves, improve airflow, fungicidal spray if it spreads'
+  },
+  {
+    name: 'Root rot',
+    img: 'Root rot.jpg',
+    desc: 'Mushy, dark roots and a sour smell, from soil staying wet too long.',
+    products: 'Unpot, trim blackened roots, repot in fresh well-draining mix'
+  },
+  {
+    name: 'Overwatering yellowing',
+    img: 'Overwatering yellowing.webp',
+    desc: 'Lower leaves turning yellow and soft while soil stays consistently wet.',
+    products: 'Check drainage holes, let soil dry fully, consider a terracotta pot'
+  },
+  {
+    name: 'Nutrient deficiency',
+    img: 'Nutrient deficiency.jpg',
+    desc: 'Pale color or unusually slow growth despite otherwise good care.',
+    products: 'Balanced liquid fertilizer during the active growing season'
   }
+];
+
+ function renderTreatments(){
+  document.getElementById('treatmentHolder').innerHTML = TREATMENTS.map(t=>`
+    <div class="treatment-card">
+
+      <!-- IMAGE -->
+      <div style="
+        width:100%;
+        height:140px;
+        border-radius:12px;
+        overflow:hidden;
+        border:0px solid #1F2E23;
+        margin-bottom:10px;
+        background:#F5F1E4;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      ">
+        <img 
+          src="${t.img}" 
+          alt="${t.name}"
+          onerror="this.src='https://via.placeholder.com/300x140?text=No+Image'"
+          style="width:100%;height:100%;object-fit:cover;"
+        >
+      </div>
+
+      <h4>${t.name}</h4>
+      <p>${t.desc}</p>
+      <div class="products">Treatment: ${t.products}</div>
+
+    </div>
+  `).join('');
+}
 
   // ============ ASK AI CHAT ============
   const chatMessages = document.getElementById('chatMessages');
@@ -1009,7 +1292,7 @@ If the plant cannot be identified with certainty, give your best guess and set c
       const replyText = textPart ? textPart.text.trim() : "Sorry, I couldn't come up with an answer just now.";
 
       typingRow.querySelector('.msg-bubble').innerHTML = mdToHtml(replyText);
-      chatHistory.push({ role:'user', text: text });
+      chatHistory.push({ role:'user', text });
       chatHistory.push({ role:'model', text: replyText });
     }catch(err){
       typingRow.querySelector('.msg-bubble').innerHTML = "Something went wrong reaching the assistant: " + escapeHtml(err.message);
