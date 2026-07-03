@@ -58,12 +58,12 @@
 }
 .reveal{
   opacity:0;
-  transform:translateY(28px) scale(0.96);
-  transition:opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1);
+  transform:translateY(40px);
+  transition:opacity .9s ease, transform .9s ease;
 }
 .reveal.in-view{
   opacity:1;
-  transform:translateY(0) scale(1);
+  transform:translateY(0);
 }
   .wrap{
 max-width:1350px;
@@ -76,14 +76,36 @@ header.hero{
   justify-content:space-between;
   align-items:center;
   gap:20px;
-
-  /* margin: 10px; */
-  background:var(--card);
-  border:1px solid var(--line);
+  background:rgba(255,255,255,0.55);
+  backdrop-filter:blur(14px) saturate(160%);
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  border:1px solid rgba(255,255,255,0.6);
   border-radius:999px;
-  padding:10px 10px 10px 30px;
-  box-shadow:0 6px 22px rgba(31,46,35,0.07);
+  padding:14px 30px;   /* was 10px 10px 10px 22px — more even breathing room */
+  box-shadow:0 8px 32px rgba(31,46,35,0.10);
 }
+.header-cta{
+  flex-shrink:0;
+  padding:12px 26px;
+  border-radius:999px;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:0.85rem;
+  border:none;
+  outline:none;                 /* removes default browser ring */
+  background:linear-gradient(100deg, var(--moss-dark), var(--moss));
+  color:#fff;
+  cursor:pointer;
+  transition:.2s;
+}
+.header-cta:hover{
+  transform:translateY(-1px);
+  box-shadow:0 8px 18px rgba(76,138,58,.25);
+}
+.header-cta:focus-visible{
+  box-shadow:0 0 0 3px rgba(76,138,58,0.35);  /* custom, contained focus ring instead of the native one */
+}
+
 .brand-mark{display:flex;align-items:center;gap:12px;flex-shrink:0;}
 h1{
   font-family:var(--font-display);
@@ -544,7 +566,7 @@ box-shadow:
 
   /* ---- Ask AI (chat) ---- */
   .chat-shell{
-    background:var(--card);border:0px solid var(--ink);border-radius:var(--radius);
+    background:var(--card);border:1px solid var(--ink);border-radius:var(--radius);
     display:flex;flex-direction:column;height:560px;overflow:hidden;
     box-shadow:6px 6px 0 rgba(31,46,35,0.08);
   }
@@ -748,7 +770,8 @@ max-height:120px;
 <script>
 (function(){
  
-
+  const API_KEY = "AQ.Ab8RN6JLVTUGxUyTjtsyRxVosf2txR8zn0HMhWuZjjjjZtAnTQ"; 
+  const MODEL = "gemini-2.5-flash";
   // ============ TAB SWITCHING ============
   document.querySelectorAll('nav.tabs button').forEach(btn=>{
     btn.addEventListener('click', ()=>switchTab(btn.dataset.tab));
@@ -763,7 +786,7 @@ max-height:120px;
   }
 
   function checkKey(errorTarget){
-    if(!API_KEY || API_KEY === ""){
+    if(!API_KEY || API_KEY === "PUT YOUR GEMINI API KEY HEREQ"){
       errorTarget.textContent = '⚠️ Add your Gemini API key at the top of the <script> block (search for "PUT YOUR GEMINI API KEY HERE"). Get one free at aistudio.google.com/app/apikey';
       errorTarget.style.display = 'block';
       return false;
@@ -1108,7 +1131,7 @@ const LIBRARY = [
   },
   {
     icon:'snake',
-    img:'snake plant.jpg',
+    img:'snake plants.jpeg',
     common_name:'Snake Plant',
     scientific_name:'Dracaena trifasciata',
     good:['Upright leaves','Very strong'],
@@ -1117,7 +1140,7 @@ const LIBRARY = [
   },
   {
     icon:'monstera',
-    img:'monstera.webp',
+    img:'mostera.jpg',
     common_name:'Monstera',
     scientific_name:'Monstera deliciosa',
     good:['Split leaves','Big growth'],
@@ -1144,7 +1167,7 @@ const LIBRARY = [
   },
   {
     icon:'aloe',
-    img:'aloe vera.webp',
+    img:'aloe vera.jpg',
     common_name:'Aloe Vera',
     scientific_name:'Aloe vera',
     good:['Thick leaves','Healing gel'],
@@ -1162,7 +1185,7 @@ const LIBRARY = [
   },
   {
     icon:'spider',
-    img:'spider plant.webp',
+    img:'spider plant.jpg',
     common_name:'Spider Plant',
     scientific_name:'Chlorophytum comosum',
     good:['Baby plants','Fast growth'],
@@ -1171,7 +1194,7 @@ const LIBRARY = [
   },
   {
     icon:'rubber',
-    img:'rubber plant.webp',
+    img:'rubber plant.jpg',
     common_name:'Rubber Plant',
     scientific_name:'Ficus elastica',
     good:['Glossy leaves','Strong stem'],
@@ -1180,7 +1203,7 @@ const LIBRARY = [
   },
   {
     icon:'ivy',
-    img:'english ivy.webp',
+    img:'english ivy.jpeg',
     common_name:'English Ivy',
     scientific_name:'Hedera helix',
     good:['Trailing vines','Dense leaves'],
@@ -1279,7 +1302,7 @@ function renderAccordion(){
   },
   {
     name: 'Powdery mildew',
-    img: 'Powdery mildew.webp',
+    img: 'Powdery mildew.jpg',
     desc: 'White, powdery coating on leaves, usually from poor airflow and high humidity.',
     products: 'Remove affected leaves, improve airflow, fungicidal spray if it spreads'
   },
@@ -1295,12 +1318,81 @@ function renderAccordion(){
     desc: 'Lower leaves turning yellow and soft while soil stays consistently wet.',
     products: 'Check drainage holes, let soil dry fully, consider a terracotta pot'
   },
+  
   {
-    name: 'Nutrient deficiency',
-    img: 'Nutrient deficiency.jpg',
-    desc: 'Pale color or unusually slow growth despite otherwise good care.',
-    products: 'Balanced liquid fertilizer during the active growing season'
+    name: "Discoloured leaves",
+    img: "discoloured-leaves.jpg",
+    desc: "Leaves showing chlorosis or nutrient-related yellowing and browning.",
+    products: "Balanced fertilizer or specific nutrient supplement"
+  },
+  {
+    name: "Whitefly",
+    img: "whitefly.jpg",
+    desc: "Tiny white insects on the underside of leaves, causing yellowing and stunted growth.",
+    products: "Yellow sticky traps or insecticidal soap"
+  },
+  {
+    name: "Sooty moulds",
+    img: "sooty-moulds.jpg",
+    desc: "Black, powdery growth on leaf surfaces, often following pest infestations.",
+    products: "Remove honeydew-producing pests and wash leaves with water"
+  },
+  {
+    name: "Slug and snail damage",
+    img: "slug-snail-damage.jpg",
+    desc: "Irregular holes in leaves, often accompanied by slime trails.",
+    products: "Copper tape or iron phosphate bait"
+  },
+  {
+    name: "Scale insects",
+    img: "scale-insects.jpg",
+    desc: "Small, bump-like insects attached to stems and leaves, sucking plant sap.",
+    products: "Horticultural oil or manual removal"
+  },
+  {
+    name: "Rust",
+    img: "rust.jpg",
+    desc: "Small, reddish-brown pustules appearing on the undersides of leaves.",
+    products: "Fungicide spray or removal of infected leaves"
+  },
+  {
+    name: "Rose black spot",
+    img: "rose-black-spot.jpg",
+    desc: "Circular black spots with yellow halos on rose leaves.",
+    products: "Copper-based fungicide or pruning"
+  },
+  
+  {
+    name: "Tomato blight",
+    img: "tomato-blight.jpg",
+    desc: "Dark, water-soaked spots on leaves and stems, leading to rapid decay.",
+    products: "Copper fungicide and improved air circulation"
+  },
+  {
+    name: "Leaf miner",
+    img: "leaf-miner.jpg",
+    desc: "Winding, white, tunnel-like tracks within the leaf tissue.",
+    products: "Neem oil or pruning heavily infested leaves"
+  },
+  {
+    name: "Iron deficiency",
+    img: "iron-deficiency.jpg",
+    desc: "Yellowing of leaves while veins remain green (interveinal chlorosis).",
+    products: "Chelated iron supplement"
+  },
+  {
+    name: "Fungal leaf spots",
+    img: "fungal-leaf-spots.jpg",
+    desc: "Various spots on leaves caused by fungal pathogens.",
+    products: "Fungicide treatment and avoiding overhead watering"
+  },
+  {
+    name: "Downy mildew",
+    img: "problems-downy-mildew.jpg",
+    desc: "Yellow or greyish patches on leaves with fuzzy growth on the underside.",
+    products: "Fungicide and increasing plant spacing"
   }
+
 ];
 
  function renderTreatments(){
@@ -1388,7 +1480,7 @@ function renderAccordion(){
 
     const typingRow = addBubble('ai', '<span class="typing-dots"><span></span><span></span><span></span></span>');
 
-    if(!API_KEY || API_KEY === ""){
+    if(!API_KEY || API_KEY === "PUT YOUR GEMINI API KEY HERE"){
       typingRow.querySelector('.msg-bubble').innerHTML = 'Add your Gemini API key at the top of the &lt;script&gt; block first (search for "PUT YOUR GEMINI API KEY HERE").';
       sendBtn.disabled = false;
       return;
@@ -1442,13 +1534,26 @@ function renderAccordion(){
 }, { threshold: 0.15 });
 
 function applyReveal(container, selector){
-  container.querySelectorAll(selector).forEach((el, i)=>{
+  let revealCount = 0;
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      const el = entry.target;
+      if(entry.isIntersecting){
+        el.style.transitionDelay = (revealCount * 90) + 'ms';
+        el.classList.add('in-view');
+        revealCount++;
+      } else {
+        el.classList.remove('in-view');
+        revealCount = 0; // reset stagger so it cascades again next time
+      }
+    });
+  }, { threshold: 0.15 });
+
+  container.querySelectorAll(selector).forEach(el=>{
     el.classList.add('reveal');
-    el.style.transitionDelay = (i * 60) + 'ms'; // staggered pop-in
-    revealObserver.observe(el);
+    observer.observe(el);
   });
 }
-
   sendBtn.addEventListener('click', sendMessage);
   chatInput.addEventListener('keydown', e=>{
     if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); sendMessage(); }
