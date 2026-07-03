@@ -56,6 +56,15 @@
     background-size:26px 26px;
 
 }
+.reveal{
+  opacity:0;
+  transform:translateY(28px) scale(0.96);
+  transition:opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1);
+}
+.reveal.in-view{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
   .wrap{
 max-width:1350px;
 margin:auto;
@@ -1017,6 +1026,8 @@ If the plant cannot be identified with certainty, give your best guess and set c
     if(!plants.length){
       gardenHolder.innerHTML = `<div class="empty-state">No plants logged yet.<br>Identify one in the Scan tab, then add it here to start tracking care.</div>`;
       return;
+
+    
     }
     gardenHolder.innerHTML = `<div class="garden-grid">` + plants.map(p=>{
       const elapsed = daysBetween(p.last_watered);
@@ -1421,6 +1432,23 @@ function renderAccordion(){
     }
   }
 
+  const revealObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('in-view');
+      revealObserver.unobserve(entry.target); // animate once
+    }
+  });
+}, { threshold: 0.15 });
+
+function applyReveal(container, selector){
+  container.querySelectorAll(selector).forEach((el, i)=>{
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i * 60) + 'ms'; // staggered pop-in
+    revealObserver.observe(el);
+  });
+}
+
   sendBtn.addEventListener('click', sendMessage);
   chatInput.addEventListener('keydown', e=>{
     if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); sendMessage(); }
@@ -1436,10 +1464,10 @@ function renderAccordion(){
   }
 
   // ============ INIT ============
-  renderGarden();
-  renderLibrary();
+  renderGarden(); applyReveal(gardenHolder, '.garden-card');
+  renderLibrary(); applyReveal(document.getElementById('libraryHolder'), '.lib-card');
   renderAccordion();
-  renderTreatments();
+  renderTreatments(); applyReveal(document.getElementById('treatmentHolder'), '.treatment-card');
   initChat();
 })();
 </script>
