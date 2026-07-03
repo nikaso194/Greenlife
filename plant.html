@@ -672,7 +672,7 @@ max-height:120px;
   }
 
   function checkKey(errorTarget){
-    if(!API_KEY || API_KEY === "YOUR_GEMINI_API_KEY_HERE"){
+    if(!API_KEY || API_KEY === ""){
       errorTarget.textContent = '⚠️ Add your Gemini API key at the top of the <script> block (search for "PUT YOUR GEMINI API KEY HERE"). Get one free at aistudio.google.com/app/apikey';
       errorTarget.style.display = 'block';
       return false;
