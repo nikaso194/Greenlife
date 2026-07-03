@@ -161,7 +161,18 @@ margin-bottom:8px;
 
 color:var(--ink);
 
-}  p.page-sub{color:var(--ink-soft);font-size:0.92rem;max-width:620px;margin:0 0 18px;}
+}  
+p.page-sub{flex:1;
+resize:none;
+border:2px solid var(--line);
+border-radius:999px;
+padding:11px 18px;
+
+font-family:var(--font-body);
+font-size:0.9rem;
+
+line-height:1.4;
+max-height:90px;}
 
   /* ---- Scanner ---- */
   .scan-panel{
@@ -386,7 +397,7 @@ transform:scale(1.05);
   .lib-care{font-size:0.82rem;color:var(--ink-soft);border-top:1.5px dashed var(--line);padding-top:8px;margin-top:2px;}
 
   /* ---- Learn & Support ---- */
-  .accordion{border:0px solid var(--ink);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;background:var(--card);}
+  .accordion{border:1px solid var(--ink);border-radius:var(--radius);overflow:hidden;margin-bottom:12px;background:var(--card);}
   .accordion-head{
     display:flex;justify-content:space-between;align-items:center;padding:14px 18px;cursor:pointer;
     font-family:var(--font-display);font-weight:700;font-size:1rem;
@@ -653,10 +664,7 @@ max-height:120px;
 </div>
 <script>
 (function(){
-  // ============================================================
-  // 🔑 PUT YOUR GEMINI API KEY HERE
-  // Get a free key at: https://aistudio.google.com/app/apikey
-  // ============================================================
+ 
 
   // ============ TAB SWITCHING ============
   document.querySelectorAll('nav.tabs button').forEach(btn=>{
@@ -671,14 +679,14 @@ max-height:120px;
     if(tab === 'garden') renderGarden();
   }
 
-  function checkKey(errorTarget){
-    if(!API_KEY || API_KEY === ""){
-      errorTarget.textContent = '⚠️ Add your Gemini API key at the top of the <script> block (search for "PUT YOUR GEMINI API KEY HERE"). Get one free at aistudio.google.com/app/apikey';
-      errorTarget.style.display = 'block';
-      return false;
-    }
-    return true;
-  }
+  // function checkKey(errorTarget){
+  //   if(!API_KEY || API_KEY === ""){
+  //     errorTarget.textContent = '⚠️ Add your Gemini API key at the top of the <script> block (search for "PUT YOUR GEMINI API KEY HERE"). Get one free at aistudio.google.com/app/apikey';
+  //     errorTarget.style.display = 'block';
+  //     return false;
+  //   }
+  //   return true;
+  // }
 
   // ============ SCAN ============
   const dropZone = document.getElementById('dropZone');
@@ -771,24 +779,24 @@ If the plant cannot be identified with certainty, give your best guess and set c
     loadingRow.style.display='flex';
     resultHolder.innerHTML='';
 
-    try{
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=` + API_KEY,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            contents: [{
-              role: "user",
-              parts: [
-                { inline_data: { mime_type: "image/jpeg", data: currentImageBase64 } },
-                { text: SYSTEM_PROMPT + "\n\nIdentify this plant and assess its condition." }
-              ]
-            }],
-            generationConfig: { temperature: 0.2 }
-          })
-        }
-      );
+    // try{
+    //   const response = await fetch(
+    //     `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=` + API_KEY,
+    //     {
+    //       method: "POST",
+    //       headers: { "Content-Type": "application/json" },
+    //       body: JSON.stringify({
+    //         contents: [{
+    //           role: "user",
+    //           parts: [
+    //             { inline_data: { mime_type: "image/jpeg", data: currentImageBase64 } },
+    //             { text: SYSTEM_PROMPT + "\n\nIdentify this plant and assess its condition." }
+    //           ]
+    //         }],
+    //         generationConfig: { temperature: 0.2 }
+    //       })
+    //     }
+    //   );
 
       const data = await response.json();
       if(!response.ok) throw new Error((data.error && data.error.message) || ("API request failed (" + response.status + ")"));
@@ -1280,7 +1288,7 @@ const LIBRARY = [
 
     const typingRow = addBubble('ai', '<span class="typing-dots"><span></span><span></span><span></span></span>');
 
-    if(!API_KEY || API_KEY === "YOUR_GEMINI_API_KEY_HERE"){
+    if(!API_KEY || API_KEY === ""){
       typingRow.querySelector('.msg-bubble').innerHTML = 'Add your Gemini API key at the top of the &lt;script&gt; block first (search for "PUT YOUR GEMINI API KEY HERE").';
       sendBtn.disabled = false;
       return;
@@ -1293,19 +1301,19 @@ const LIBRARY = [
     }));
     contents.push({ role: 'user', parts: [{ text: text }] });
 
-    try{
-      const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=` + API_KEY,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            system_instruction: { parts: [{ text: CHAT_SYSTEM }] },
-            contents: contents,
-            generationConfig: { temperature: 0.4 }
-          })
-        }
-      );
+    // try{
+      // const response = await fetch(
+      //   `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=` + API_KEY,
+      //   {
+      //     method: "POST",
+      //     headers: { "Content-Type": "application/json" },
+      //     body: JSON.stringify({
+      //       system_instruction: { parts: [{ text: CHAT_SYSTEM }] },
+      //       contents: contents,
+      //       generationConfig: { temperature: 0.4 }
+      //     })
+      //   }
+      // );
       const data = await response.json();
       if(!response.ok) throw new Error((data.error && data.error.message) || ("Request failed (" + response.status + ")"));
 
