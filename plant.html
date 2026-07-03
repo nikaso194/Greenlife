@@ -62,35 +62,36 @@ margin:auto;
 padding:30px;
 }
 
-  header.hero{
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-padding-bottom:22px;
-
-border-bottom:1px solid var(--line);
-
+header.hero{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  /* margin: 10px; */
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:10px 10px 10px 22px;
+  box-shadow:0 6px 22px rgba(31,46,35,0.07);
 }
-  .brand-mark{display:flex;align-items:center;gap:12px;}
-  h1{
-    font-family:var(--font-display);
-    font-weight:800;
-    font-size:2.3rem;
-    margin:0;
-    letter-spacing:-0.01em;
-    background:linear-gradient(100deg, var(--moss-dark), var(--moss) 60%, var(--moss-2));
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
-  .tagline{
-    font-family:var(--font-mono);
-    font-size:0.72rem;
-    text-transform:uppercase;
-    letter-spacing:0.09em;
-    color:var(--ink-soft);
-    margin-top:2px;
-  }
+.brand-mark{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+h1{
+  font-family:var(--font-display);
+  font-weight:800;
+  font-size:1.7rem;
+  margin:0;
+  letter-spacing:-0.01em;
+  background:linear-gradient(100deg, var(--moss-dark), var(--moss) 60%, var(--moss-2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.tagline{
+  font-family:var(--font-mono);
+  font-size:0.66rem;
+  text-transform:uppercase;
+  letter-spacing:0.09em;
+  color:var(--ink-soft);
+  margin-top:1px;
+}
   nav.tabs{display:flex;gap:6px;flex-wrap:wrap;}
   nav.tabs button{
 
@@ -140,7 +141,7 @@ color:var(--ink);
 }  
 p.page-sub{flex:1;
 resize:none;
-border:2px solid var(--line);
+border:0px solid var(--line);
 border-radius:999px;
 padding:11px 18px;
 
@@ -384,6 +385,98 @@ transform:scale(1.05);
   .accordion.open .accordion-body{max-height:400px;padding:0 18px 16px;}
   .accordion-body p{margin:0;font-size:0.9rem;line-height:1.6;color:var(--ink);}
 
+  /* ---- GUIDE CARDS ---- */
+.guide-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+  gap:14px;
+  margin-top:6px;
+}
+
+.guide-card{
+  background:var(--card);
+  border:2px solid var(--line);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:4px 4px 0 rgba(31,46,35,0.06);
+  transition:.25s;
+}
+
+.guide-card:hover{
+  transform:translateY(-4px);
+}
+
+.guide-card h4{
+  font-family:var(--font-display);
+  margin:0 0 8px;
+  font-size:1rem;
+  color:var(--moss-dark);
+}
+
+.guide-card p{
+  margin:0;
+  font-size:0.85rem;
+  line-height:1.5;
+  color:var(--ink);
+}
+/* ---- GUIDE ACCORDION CARDS ---- */
+.guide-accordion{
+  border:2px solid var(--line);
+  border-radius:var(--radius);
+  background:var(--card);
+  margin-bottom:10px;
+  overflow:hidden;
+  transition:.25s;
+}
+
+.guide-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 16px;
+  cursor:pointer;
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:0.95rem;
+}
+
+.guide-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.guide-icon{
+  font-size:1.1rem;
+}
+
+.guide-body{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .25s ease, padding .25s ease;
+  padding:0 16px;
+}
+
+.guide-accordion.open .guide-body{
+  max-height:200px;
+  padding:0 16px 14px;
+}
+
+.guide-body p{
+  margin:0;
+  font-size:0.9rem;
+  line-height:1.5;
+  color:var(--ink);
+}
+
+.guide-accordion.open .chev{
+  transform:rotate(180deg);
+}
+
+.chev{
+  transition:.2s;
+  color:var(--moss);
+}
   .treatment-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:6px;}
   .treatment-card{
     background:var(--card);border:0px solid var(--ink);border-radius:var(--radius);padding:16px;
@@ -395,6 +488,14 @@ transform:scale(1.05);
     margin-top:8px;font-family:var(--font-mono);font-size:0.72rem;color:var(--moss-dark);background:#EAF4E4;
     padding:6px 10px;border-radius:8px;
   }
+  .treatment-card:hover{
+transform:translateY(-2px);
+
+box-shadow:
+0 18px 40px rgba(0,0,0,.08);
+transform:scale(1.03);
+
+}
 
   .support-card{
     background:linear-gradient(120deg, var(--sky-soft), #EFFAFB);
@@ -432,6 +533,7 @@ transform:translateY(-2px);
 
 box-shadow:
 0 8px 20px rgba(76,138,58,.25);
+
 
 }
 
@@ -655,14 +757,14 @@ max-height:120px;
     if(tab === 'garden') renderGarden();
   }
 
-  // function checkKey(errorTarget){
-  //   if(!API_KEY || API_KEY === ""){
-  //     errorTarget.textContent = '⚠️ Add your Gemini API key at the top of the <script> block (search for "PUT YOUR GEMINI API KEY HERE"). Get one free at aistudio.google.com/app/apikey';
-  //     errorTarget.style.display = 'block';
-  //     return false;
-  //   }
-  //   return true;
-  // }
+  function checkKey(errorTarget){
+    if(!API_KEY || API_KEY === ""){
+      errorTarget.textContent = '⚠️ Add your Gemini API key at the top of the <script> block (search for "PUT YOUR GEMINI API KEY HERE"). Get one free at aistudio.google.com/app/apikey';
+      errorTarget.style.display = 'block';
+      return false;
+    }
+    return true;
+  }
 
   // ============ SCAN ============
   const dropZone = document.getElementById('dropZone');
@@ -755,24 +857,24 @@ If the plant cannot be identified with certainty, give your best guess and set c
     loadingRow.style.display='flex';
     resultHolder.innerHTML='';
 
-    // try{
-    //   const response = await fetch(
-    //     `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=` + API_KEY,
-    //     {
-    //       method: "POST",
-    //       headers: { "Content-Type": "application/json" },
-    //       body: JSON.stringify({
-    //         contents: [{
-    //           role: "user",
-    //           parts: [
-    //             { inline_data: { mime_type: "image/jpeg", data: currentImageBase64 } },
-    //             { text: SYSTEM_PROMPT + "\n\nIdentify this plant and assess its condition." }
-    //           ]
-    //         }],
-    //         generationConfig: { temperature: 0.2 }
-    //       })
-    //     }
-    //   );
+    try{
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=` + API_KEY,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: [{
+              role: "user",
+              parts: [
+                { inline_data: { mime_type: "image/jpeg", data: currentImageBase64 } },
+                { text: SYSTEM_PROMPT + "\n\nIdentify this plant and assess its condition." }
+              ]
+            }],
+            generationConfig: { temperature: 0.2 }
+          })
+        }
+      );
 
       const data = await response.json();
       if(!response.ok) throw new Error((data.error && data.error.message) || ("API request failed (" + response.status + ")"));
@@ -1114,21 +1216,36 @@ const LIBRARY = [
     { title:'Seasonal care shifts', body:'Growth slows in fall and winter as light drops, so most plants need less water and no fertilizer during that stretch. Resume regular watering and start feeding again once you see new growth in spring — that\'s the plant telling you it\'s active again.' }
   ];
 
-  function renderAccordion(){
-    document.getElementById('accordionHolder').innerHTML = GUIDES.map((g,i)=>`
-      <div class="accordion" id="acc-${i}">
-        <div class="accordion-head" data-idx="${i}">
-          <span>${g.title}</span><span class="chev">▾</span>
+function renderAccordion(){
+  document.getElementById('accordionHolder').innerHTML = GUIDES.map((g, i)=>{
+
+    const icons = ['💧','☀️','🪴','🐛','🍂']; // one per guide
+    const icon = icons[i] || '🌿';
+
+    return `
+      <div class="guide-accordion" id="guide-${i}">
+        <div class="guide-head" data-i="${i}">
+          <span class="guide-title">
+            <span class="guide-icon">${icon}</span>
+            ${g.title}
+          </span>
+          <span class="chev">▾</span>
         </div>
-        <div class="accordion-body"><p>${g.body}</p></div>
+
+        <div class="guide-body">
+          <p>${g.body}</p>
+        </div>
       </div>
-    `).join('');
-    document.querySelectorAll('.accordion-head').forEach(h=>{
-      h.addEventListener('click', ()=>{
-        document.getElementById('acc-'+h.dataset.idx).classList.toggle('open');
-      });
+    `;
+  }).join('');
+
+  document.querySelectorAll('.guide-head').forEach(head=>{
+    head.addEventListener('click', ()=>{
+      const parent = document.getElementById('guide-' + head.dataset.i);
+      parent.classList.toggle('open');
     });
-  }
+  });
+}
 
   // const TREATMENTS = [
   //   { name:'Aphids &amp; mealybugs', img:'Aphids & mealybugs.jpg', desc:'Small clustered insects on new growth or leaf undersides, often with sticky residue.', products:'Insecticidal soap or neem oil spray, applied weekly' },
@@ -1277,19 +1394,19 @@ const LIBRARY = [
     }));
     contents.push({ role: 'user', parts: [{ text: text }] });
 
-    // try{
-      // const response = await fetch(
-      //   `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=` + API_KEY,
-      //   {
-      //     method: "POST",
-      //     headers: { "Content-Type": "application/json" },
-      //     body: JSON.stringify({
-      //       system_instruction: { parts: [{ text: CHAT_SYSTEM }] },
-      //       contents: contents,
-      //       generationConfig: { temperature: 0.4 }
-      //     })
-      //   }
-      // );
+    try{
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=` + API_KEY,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            system_instruction: { parts: [{ text: CHAT_SYSTEM }] },
+            contents: contents,
+            generationConfig: { temperature: 0.4 }
+          })
+        }
+      );
       const data = await response.json();
       if(!response.ok) throw new Error((data.error && data.error.message) || ("Request failed (" + response.status + ")"));
 
