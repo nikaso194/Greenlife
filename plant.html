@@ -719,7 +719,7 @@ max-height:120px;
   <!-- LIBRARY TAB -->
   <section id="tab-library">
     <h2 class="page-title">Plant library</h2>
-    <p class="page-sub">Ten common houseplants — what healthy growth looks like, and the early signs that something's off, before you need to run a scan.</p>
+    <p class="page-sub">Twelve common houseplants — what healthy growth looks like, and the early signs that something's off, before you need to run a scan.</p>
     <div id="libraryHolder" class="library-grid"></div>
   </section>
 
@@ -771,7 +771,7 @@ max-height:120px;
 <script>
 (function(){
  
-  const API_KEY = "AQ.Ab8RN6JLVTUGxUyTjtsyRxVosf2txR8zn0HMhWuZjjjjZtAnTQ"; 
+  const API_KEY = "AQ.Ab8RN6LOQWUpw76sJmPxH90KPWcgDhFHwoatTxN-KRNMs7SDAA"; 
   const MODEL = "gemini-2.5-flash";
   // ============ TAB SWITCHING ============
   document.querySelectorAll('nav.tabs button').forEach(btn=>{
@@ -1210,7 +1210,26 @@ const LIBRARY = [
     good:['Trailing vines','Dense leaves'],
     watch:['Pests','Dry leaves'],
     care:'Regular watering'
-  }
+  },
+  
+  {
+    icon: 'philodendron',
+    img: 'Philodendron plants.jpg',
+    common_name: 'Philodendron',
+    scientific_name: 'Philodendron',
+    good: ['Heart-shaped leaves', 'Easy to propagate'],
+    watch: ['Drooping leaves', 'Yellowing leaves'],
+    care: 'Water when the top inch of soil is dry'
+  },
+  {
+    icon: 'money_tree',
+    img: 'money tree.webp',
+    common_name: 'Money Tree',
+    scientific_name: 'Pachira aquatica',
+    good: ['Braided trunk', 'Adaptable to various light levels'],
+    watch: ['Leaf drop', 'Soft or mushy stem'],
+    care: 'Water every 10–14 days'
+  },
 ];
 
   function renderLibrary(){
